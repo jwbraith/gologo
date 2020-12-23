@@ -8,6 +8,7 @@ function setup() {
   cnv.parent('sketch');
   background(0);
   rectMode(CENTER);
+  angleMode(DEGREES);
   enemy = new Enemy(0, 280, 6);
   x = width / 2;
   y = height / 2;

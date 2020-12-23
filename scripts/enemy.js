@@ -1,21 +1,26 @@
 class Enemy {
   constructor(x, y, r) {
     this.origin = createVector(x, y);
-    this.vel = createVector(1, -1);
+    this.vel = createVector(2, -2);
     this.pos = createVector(x, y);
-    this.angX = 0;
-    this.angY = 0;
-    this.mag = 30;
+    this.angX = 45;
+    this.angY = 45;
+    this.mag = 36;
     this.radius = r;
   }
 
   update() {
-    // this.mag = 112 - this.pos.y;
-    this.origin.add(this.vel);
-    if (this.origin.y < 150) {
-      this.angX += 0.11;
-      this.angY += 0.1;
+    // this.origin.add(this.vel);
+    if (this.origin.y < 200 && this.angX <= 405) {
+      this.angX += 4;
+      this.angY += 4;
+      this.vel.mult(0);
+    } else {
+      this.origin.add(this.vel);
     }
+    // if (this.angX > 405) {
+    //   this.vel = createVector(2, -2);
+    // }
     this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
   }
 
@@ -27,10 +32,11 @@ class Enemy {
     push();
     translate(this.origin.x, this.origin.y);
     noStroke();
+    stroke(0);
+    fill(255, 0, 155);
+    ellipse(this.pos.x, this.pos.y, this.radius * 2);
     fill(10, 250, 10);
     ellipse(0, 0, this.radius);
-    fill(255);
-    ellipse(this.pos.x, this.pos.y, this.radius * 2);
     pop();
   }
 }
