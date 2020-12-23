@@ -1,5 +1,6 @@
 let x, y;
 let delta = 5;
+let enemy;
 
 function setup() {
   pixelDensity(1);
@@ -7,13 +8,20 @@ function setup() {
   cnv.parent('sketch');
   background(0);
   rectMode(CENTER);
+  enemy = new Enemy(0, 280, 6);
   x = width / 2;
   y = height / 2;
 }
 
 function draw() {
-  background(0);
+  // background(0);
   stroke(255);
+  enemy.update();
+  enemy.show();
+  for (let a = 0; a < TWO_PI; a++) {
+    x = 10 * sin(a);
+    y = 10 * cos(a);
+  }
   rect(x, y, 1, 1);
   if (y > 0 && keyIsDown(UP_ARROW)) {
     y -= delta;
