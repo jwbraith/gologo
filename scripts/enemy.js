@@ -10,17 +10,16 @@ class Enemy {
   }
 
   update() {
-    // this.origin.add(this.vel);
+    this.origin.add(this.vel);
     if (this.origin.y < 200 && this.angX <= 405) {
       this.angX += 4;
       this.angY += 4;
       this.vel.mult(0);
-    } else {
-      this.origin.add(this.vel);
     }
-    // if (this.angX > 405) {
-    //   this.vel = createVector(2, -2);
-    // }
+
+    if (this.angX > 405) {
+      this.vel = createVector(2, -2);
+    }
     this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
   }
 
