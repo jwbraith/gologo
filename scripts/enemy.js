@@ -1,7 +1,7 @@
 class Enemy {
   constructor(x, y, r) {
     this.origin = createVector(x, y);
-    this.vel = createVector(2, -2);
+    this.vel = createVector(2, -3);
     this.pos = createVector(x, y);
     this.angX = 45;
     this.angY = 45;
@@ -10,17 +10,27 @@ class Enemy {
   }
 
   update() {
-    this.origin.add(this.vel);
+
+    console.log(this.origin.y);
     if (this.origin.y < 200 && this.angX <= 405) {
       this.angX += 4;
       this.angY += 4;
       this.vel.mult(0);
+      this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
+    } else if (this.origin.y < 200 && this.angX >= 405) {
+      this.vel = createVector(2, -3);
+    } else if (this.origin.y < 150) {
+      this.origin.lerp(20, 20, 0.5);
+      this.mag--;
+    } else {
+      this.origin.add(this.vel);
+      this.pos = createVector(this.mag * sin(45), this.mag * cos(45));
+
     }
 
-    if (this.angX > 405) {
-      this.vel = createVector(2, -2);
-    }
-    this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
+    // if (this.angX > 405) {
+    //   this.vel = createVector(2, -3);
+    // }
   }
 
   setPos(vec) {
