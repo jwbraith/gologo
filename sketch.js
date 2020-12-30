@@ -15,7 +15,7 @@ function setup() {
 }
 
 function draw() {
-  // background(0);
+  background(0);
   stroke(255);
   enemy.update();
   enemy.show();
