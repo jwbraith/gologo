@@ -18,27 +18,31 @@ class Enemy {
   // - make a toon object
 
   update() {
-
-    if (this.origin.y < 200 && this.angX <= 405) {
-      this.angX += 4;
-      this.angY += 4;
-      this.vel.mult(0);
-      this.pos = createVector(this.mag * sin(this.angX) - this.offset, this.mag * cos(this.angY) + this.offset);
-    } else if (this.origin.y < 200 && this.origin.y > 150 && this.angX >= 405) {
-      this.vel = createVector(2, -3);
-      this.origin.add(this.vel)
-    } else if (this.origin.y < 100) {
-      this.origin = p5.Vector.lerp(this.origin, this.endPos, 0.05);
-      if (this.mag > 0) {
-        this.mag--;
-      }
-      this.pos = createVector(this.mag * sin(this.angX) - this.offset, this.mag * cos(this.angY) + this.offset);
+    if (this.origin.y > 200) {
+      this.forward();
     } else {
-      this.origin.add(this.vel);
-      this.pos = createVector(this.mag * sin(45), this.mag * cos(45));
-
+      if (this.angX < 405) {
+        this.loopDeLoop();
+      } else {
+        this.forward();
+      }
     }
+  }
 
+  loopDeLoop() {
+    this.angX += 4;
+    this.angY += 4;
+  }
+
+  forward() {
+    this.origin.add(this.vel);
+  }
+
+  fallIn() {
+    this.origin = p5.Vector.lerp(this.origin, this.endPos, 0.05);
+    if (this.mag > 0) {
+      this.mag--;
+    }
   }
 
   setPos(vec) {
@@ -46,6 +50,7 @@ class Enemy {
   }
 
   show() {
+    this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
     push();
     translate(this.origin.x, this.origin.y);
     noStroke();
