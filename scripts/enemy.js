@@ -23,8 +23,10 @@ class Enemy {
     } else {
       if (this.angX < 405) {
         this.loopDeLoop();
-      } else {
+      } else if (this.origin.y > 100) {
         this.forward();
+      } else {
+        this.fallIn();
       }
     }
   }
