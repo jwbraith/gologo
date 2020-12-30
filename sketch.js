@@ -1,6 +1,7 @@
 let x, y;
 let delta = 5;
 let toon1 = [];
+
 let numInToon = 8;
 
 function setup() {
@@ -12,7 +13,7 @@ function setup() {
   angleMode(DEGREES);
   enemy = new Enemy(0, 280, 6);
   for (let i = 0; i < numInToon; i++) {
-    toon1.push(new Enemy(0 - (i * 30), 280 + (i * 30), 6));
+    toon1.push(new Enemy(0, 280, 6, i * 20, 65, i * 30));
   }
   x = width / 2;
   y = height / 2;

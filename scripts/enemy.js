@@ -1,9 +1,10 @@
 class Enemy {
-  constructor(x, y, r) {
+  constructor(x, y, r, endX, endY, offset) {
     this.origin = createVector(x, y);
     this.vel = createVector(2, -3);
-    this.pos = createVector(x, y);
-    this.endPos = createVector(75, 75);
+    this.pos = createVector(x - offset, y - offset);
+    this.offset = offset;
+    this.endPos = createVector(endX, endY);
     this.angX = 45;
     this.angY = 45;
     this.mag = 36;
@@ -22,17 +23,16 @@ class Enemy {
       this.angX += 4;
       this.angY += 4;
       this.vel.mult(0);
-      this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
+      this.pos = createVector(this.mag * sin(this.angX) - this.offset, this.mag * cos(this.angY) + this.offset);
     } else if (this.origin.y < 200 && this.origin.y > 150 && this.angX >= 405) {
       this.vel = createVector(2, -3);
       this.origin.add(this.vel)
     } else if (this.origin.y < 100) {
-      console.log(this.mag);
       this.origin = p5.Vector.lerp(this.origin, this.endPos, 0.05);
       if (this.mag > 0) {
         this.mag--;
       }
-      this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
+      this.pos = createVector(this.mag * sin(this.angX) - this.offset, this.mag * cos(this.angY) + this.offset);
     } else {
       this.origin.add(this.vel);
       this.pos = createVector(this.mag * sin(45), this.mag * cos(45));
@@ -54,7 +54,7 @@ class Enemy {
     // displaying the angular point
     fill(this.colour);
     let displayAng = Math.floor(this.angX);
-    text(displayAng, this.pos.x + 7, this.pos.y + 7);
+    // text(displayAng, this.pos.x + 7, this.pos.y + 7);
     ellipse(this.pos.x, this.pos.y, this.radius * 2);
 
     // displaying the origin point 
