@@ -54,7 +54,7 @@ class Enemy {
     // displaying the angular point
     fill(this.colour);
     let displayAng = Math.floor(this.angX);
-    // text(displayAng, this.pos.x + 7, this.pos.y + 7);
+    text(displayAng, this.pos.x + 7, this.pos.y + 7);
     ellipse(this.pos.x, this.pos.y, this.radius * 2);
 
     // displaying the origin point 

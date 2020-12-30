@@ -1,6 +1,7 @@
 let x, y;
 let delta = 5;
-let enemy;
+let toon1 = [];
+let numInToon = 8;
 
 function setup() {
   pixelDensity(1);
@@ -10,6 +11,9 @@ function setup() {
   rectMode(CENTER);
   angleMode(DEGREES);
   enemy = new Enemy(0, 280, 6);
+  for (let i = 0; i < numInToon; i++) {
+    toon1.push(new Enemy(0 - (i * 30), 280 + (i * 30), 6));
+  }
   x = width / 2;
   y = height / 2;
 }
@@ -17,13 +21,13 @@ function setup() {
 function draw() {
   background(0);
   stroke(255);
-  enemy.update();
-  enemy.show();
-  for (let a = 0; a < TWO_PI; a++) {
-    x = 10 * sin(a);
-    y = 10 * cos(a);
-  }
-  rect(x, y, 1, 1);
+  toon1.forEach(nme => {
+    nme.update();
+    nme.show();
+  });
+  // enemy.update();
+  // enemy.show();
+
   if (y > 0 && keyIsDown(UP_ARROW)) {
     y -= delta;
   }
