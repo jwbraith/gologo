@@ -8,7 +8,13 @@ class Enemy {
     this.angY = 45;
     this.mag = 36;
     this.radius = r;
+    this.colour = color(random(255), random(255), random(255));
   }
+
+  // TODO 
+  // - organize the update parts into separate movements functions?
+  // - make more than one enemy? how do they enter in, how do they have separate flight paths
+  // - make a toon object
 
   update() {
 
@@ -46,7 +52,7 @@ class Enemy {
     stroke(0);
 
     // displaying the angular point
-    fill(255, 0, 155);
+    fill(this.colour);
     let displayAng = Math.floor(this.angX);
     // text(displayAng, this.pos.x + 7, this.pos.y + 7);
     ellipse(this.pos.x, this.pos.y, this.radius * 2);
