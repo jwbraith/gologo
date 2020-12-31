@@ -13,10 +13,10 @@ function setup() {
   angleMode(DEGREES);
   enemy = new Enemy(0, 280, 6);
   for (let i = 0; i < numInToon; i++) {
-    toon1.push(new Enemy(20 - (i * 10), 280 + (i * 30), 6, i * 20, 65));
+    toon1.push(new Enemy(20 - (i * 20), 280 + (i * 30), 6, i * 20, 65));
   }
   x = width / 2;
-  y = height / 2;
+  y = 280;
 }
 
 function draw() {
@@ -26,7 +26,7 @@ function draw() {
     nme.update();
     nme.show();
   });
-  rect(x, y, 20, 20);
+  rect(x, y, 6, 6);
   if (y > 0 && keyIsDown(UP_ARROW)) {
     y -= delta;
   }

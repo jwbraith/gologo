@@ -1,12 +1,12 @@
 class Enemy {
   constructor(x, y, r, endX, endY) {
     this.origin = createVector(x, y);
-    this.vel = createVector(1, -3);
+    this.vel = createVector(2, -3);
     this.pos = createVector(0, 0);
     this.endPos = createVector(endX, endY);
     this.angX = 45;
     this.angY = 45;
-    this.mag = 36;
+    this.mag = 48;
     this.radius = r;
     this.colour = color(random(255), random(255), random(255));
   }
@@ -25,7 +25,11 @@ class Enemy {
       } else if (this.origin.y > 100) {
         this.forward();
       } else {
-        this.fallIn();
+        if (this.origin.dist(this.endPos) < 0.5) {
+          this.float();
+        } else {
+          this.fallIn();
+        }
       }
     }
   }
@@ -36,14 +40,6 @@ class Enemy {
   }
 
   forward() {
-    // let fallPoint = createVector(70, 99);
-    // let orbitPoint = createVector(54, 199);
-    // if (this.angX < 405) {
-    //   this.origin = p5.Vector.lerp(this.origin, orbitPoint, 0.05);
-
-    // } else {
-    //   this.origin = p5.Vector.lerp(this.origin, fallPoint, 0.05);
-    // }
     this.origin.add(this.vel);
   }
 
@@ -52,6 +48,12 @@ class Enemy {
     if (this.mag > 0) {
       this.mag--;
     }
+  }
+
+  float() {
+    let moveLeft = createVector(6, 0);
+    let moveRight = createVector(-6, 0);
+    this.origin.add(moveLeft);
   }
 
   setPos(vec) {
