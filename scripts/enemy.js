@@ -1,9 +1,8 @@
 class Enemy {
-  constructor(x, y, r, endX, endY, offset) {
+  constructor(x, y, r, endX, endY) {
     this.origin = createVector(x, y);
-    this.vel = createVector(2, -3);
-    this.pos = createVector(x - offset, y - offset);
-    this.offset = offset;
+    this.vel = createVector(1, -3);
+    this.pos = createVector(0, 0);
     this.endPos = createVector(endX, endY);
     this.angX = 45;
     this.angY = 45;
@@ -37,6 +36,14 @@ class Enemy {
   }
 
   forward() {
+    // let fallPoint = createVector(70, 99);
+    // let orbitPoint = createVector(54, 199);
+    // if (this.angX < 405) {
+    //   this.origin = p5.Vector.lerp(this.origin, orbitPoint, 0.05);
+
+    // } else {
+    //   this.origin = p5.Vector.lerp(this.origin, fallPoint, 0.05);
+    // }
     this.origin.add(this.vel);
   }
 
@@ -66,8 +73,9 @@ class Enemy {
 
     // displaying the origin point 
     fill(10, 250, 10);
+    let displayX = Math.floor(this.origin.x);
     let displayY = Math.floor(this.origin.y);
-    // text(displayY, this.pos.x + 5, this.pos.y - 5);
+    // text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
     // ellipse(0, 0, this.radius);
     pop();
   }
