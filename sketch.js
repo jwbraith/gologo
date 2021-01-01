@@ -1,8 +1,9 @@
 let x, y;
 let delta = 5;
 let toon1 = [];
+let formation;
 
-let numInToon = 8;
+let numInToon = 4;
 
 function setup() {
   pixelDensity(1);
@@ -15,6 +16,7 @@ function setup() {
   for (let i = 0; i < numInToon; i++) {
     toon1.push(new Enemy(20 - (i * 20), 280 + (i * 30), 6, i * 20, 65));
   }
+  formation = new Formation();
   x = width / 2;
   y = 280;
 }
@@ -26,8 +28,10 @@ function draw() {
     nme.update();
     nme.show();
   });
+  formation.update();
+  formation.show();
   rect(x, y, 6, 6);
-  if (y > 0 && keyIsDown(UP_ARROW)) {
+  if (y > 260 && keyIsDown(UP_ARROW)) {
     y -= delta;
   }
   if (y < height && keyIsDown(DOWN_ARROW)) {

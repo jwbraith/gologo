@@ -9,6 +9,9 @@ class Enemy {
     this.mag = 48;
     this.radius = r;
     this.colour = color(random(255), random(255), random(255));
+    this.flying = true;
+    this.floating = false;
+    this.attacking = false;
   }
 
   // TODO 
@@ -17,20 +20,27 @@ class Enemy {
   // - make a toon object
 
   update() {
-    if (this.origin.y > 200) {
-      this.forward();
-    } else {
-      if (this.angX < 405) {
-        this.loopDeLoop();
-      } else if (this.origin.y > 100) {
+    if (this.flying) {
+
+      if (this.origin.y > 200) {
         this.forward();
       } else {
-        if (this.origin.dist(this.endPos) < 0.5) {
-          this.float();
+        if (this.angX < 405) {
+          this.loopDeLoop();
+        } else if (this.origin.y > 100) {
+          this.forward();
         } else {
-          this.fallIn();
+          if (this.origin.dist(this.endPos) < 0.5) {
+            this.flying = false;
+            this.floating = true;
+          } else {
+            this.fallIn();
+          }
         }
       }
+    }
+    if (this.floating) {
+      this.float();
     }
   }
 
@@ -56,10 +66,6 @@ class Enemy {
     this.origin.add(moveLeft);
   }
 
-  setPos(vec) {
-    this.origin = vec;
-  }
-
   show() {
     this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
     push();
@@ -78,7 +84,7 @@ class Enemy {
     let displayX = Math.floor(this.origin.x);
     let displayY = Math.floor(this.origin.y);
     // text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
-    // ellipse(0, 0, this.radius);
+    ellipse(0, 0, this.radius);
     pop();
   }
 }
