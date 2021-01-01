@@ -28,6 +28,11 @@ function draw() {
     nme.update();
     nme.show();
   });
+  for (let i = 0; i < toon1.length; i++) {
+    toon1[i].update(formation.toonA[i].x, formation.toonA[i].y, formation.posX, formation.posY);
+    toon1[i].show();
+
+  }
   formation.update();
   formation.show();
   rect(x, y, 6, 6);

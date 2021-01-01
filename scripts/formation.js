@@ -26,7 +26,7 @@ class Formation {
 
   update() {
     if (frameCount % 30 == 0) {
-      if (this.posX > 24 || this.posX < 0) {
+      if (this.posX >= 24 || this.posX < 0) {
         this.vel *= -1;
       }
       this.posX += this.vel;

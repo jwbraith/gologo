@@ -1,9 +1,9 @@
 class Enemy {
   constructor(x, y, r, endX, endY) {
     this.origin = createVector(x, y);
-    this.vel = createVector(2, -3);
+    this.vel = createVector(0.6, -0.9);
     this.pos = createVector(0, 0);
-    this.endPos = createVector(endX, endY);
+    // this.endPos = createVector(endX, endY);
     this.angX = 45;
     this.angY = 45;
     this.mag = 48;
@@ -19,9 +19,9 @@ class Enemy {
   // - make more than one enemy? how do they enter in, how do they have separate flight paths
   // - make a toon object
 
-  update() {
+  update(endPosX, endPosY, offsetX, offsetY) {
+    let endPos = createVector(endPosX + offsetX, endPosY + offsetY);
     if (this.flying) {
-
       if (this.origin.y > 200) {
         this.forward();
       } else {
@@ -30,11 +30,11 @@ class Enemy {
         } else if (this.origin.y > 100) {
           this.forward();
         } else {
-          if (this.origin.dist(this.endPos) < 0.5) {
+          if (this.origin.dist(endPos) < 0.5) {
             this.flying = false;
             this.floating = true;
           } else {
-            this.fallIn();
+            this.fallIn(endPos);
           }
         }
       }
@@ -45,16 +45,16 @@ class Enemy {
   }
 
   loopDeLoop() {
-    this.angX += 4;
-    this.angY += 4;
+    this.angX += 2;
+    this.angY += 2;
   }
 
   forward() {
     this.origin.add(this.vel);
   }
 
-  fallIn() {
-    this.origin = p5.Vector.lerp(this.origin, this.endPos, 0.05);
+  fallIn(endPos) {
+    this.origin = p5.Vector.lerp(this.origin, endPos, 0.03);
     if (this.mag > 0) {
       this.mag--;
     }
@@ -83,8 +83,8 @@ class Enemy {
     fill(10, 250, 10);
     let displayX = Math.floor(this.origin.x);
     let displayY = Math.floor(this.origin.y);
-    // text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
-    ellipse(0, 0, this.radius);
+    text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
+    // ellipse(0, 0, this.radius);
     pop();
   }
 }
