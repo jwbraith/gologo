@@ -1,7 +1,7 @@
 class Enemy {
   constructor(x, y, r, endX, endY) {
     this.origin = createVector(x, y);
-    this.vel = createVector(0.6, -0.9);
+    this.vel = createVector(1.2, -1.8);
     this.pos = createVector(0, 0);
     // this.endPos = createVector(endX, endY);
     this.angX = 45;
@@ -21,6 +21,7 @@ class Enemy {
 
   update(endPosX, endPosY, offsetX, offsetY) {
     let endPos = createVector(endPosX + offsetX, endPosY + offsetY);
+    console.log("the received position should be at least 30, 30 but is " + endPos.x + ', ' + endPos.y);
     if (this.flying) {
       if (this.origin.y > 200) {
         this.forward();
@@ -40,13 +41,14 @@ class Enemy {
       }
     }
     if (this.floating) {
-      this.float();
+      this.float(endPos);
     }
+
   }
 
   loopDeLoop() {
-    this.angX += 2;
-    this.angY += 2;
+    this.angX += 3;
+    this.angY += 3;
   }
 
   forward() {
@@ -54,17 +56,16 @@ class Enemy {
   }
 
   fallIn(endPos) {
-    this.origin = p5.Vector.lerp(this.origin, endPos, 0.03);
+    this.origin = p5.Vector.lerp(this.origin, endPos, 0.05);
     if (this.mag > 0) {
       this.mag--;
     }
   }
 
-  float() {
-    let moveLeft = createVector(6, 0);
-    let moveRight = createVector(-6, 0);
-    this.origin.add(moveLeft);
+  float(endPos) {
+    this.origin = p5.Vector.lerp(this.origin, endPos, 1.0);
   }
+
 
   show() {
     this.pos = createVector(this.mag * sin(this.angX), this.mag * cos(this.angY));
@@ -83,7 +84,7 @@ class Enemy {
     fill(10, 250, 10);
     let displayX = Math.floor(this.origin.x);
     let displayY = Math.floor(this.origin.y);
-    text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
+    // text("x: " + displayX + " y: " + displayY, this.pos.x + 5, this.pos.y - 5);
     // ellipse(0, 0, this.radius);
     pop();
   }
