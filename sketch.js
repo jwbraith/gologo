@@ -4,7 +4,7 @@ let toon1 = [];
 let bullets = [];
 let formation;
 
-let numInToon = 4;
+let numInToon = 8;
 
 function setup() {
   // pixelDensity(1);

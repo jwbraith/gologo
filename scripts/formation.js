@@ -24,6 +24,22 @@ class Formation {
         y: 50
       },
 
+      {
+        x: 30,
+        y: 70
+      },
+      {
+        x: 50,
+        y: 70,
+      },
+      {
+        x: 30,
+        y: 90
+      },
+      {
+        x: 50,
+        y: 90
+      }
     ]
   }
 
@@ -42,7 +58,7 @@ class Formation {
     noStroke();
     fill(255, 0, 255);
     for (let i = 0; i < this.toonA.length; i++) {
-      // ellipse(this.toonA[i].x, this.toonA[i].y, 6);
+      ellipse(this.toonA[i].x, this.toonA[i].y, 6);
     }
     pop();
   }
