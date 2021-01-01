@@ -39,23 +39,34 @@ function draw() {
     bullet.update();
     bullet.show();
   });
-  if (y > 260 && keyIsDown(UP_ARROW)) {
+
+  // movement keys
+  if (y > 260 && keyIsDown(87)) {
     y -= delta;
   }
-  if (y < height && keyIsDown(DOWN_ARROW)) {
+  if (y < height && keyIsDown(83)) {
     y += delta;
   }
-  if (x > 0 && keyIsDown(LEFT_ARROW)) {
+  if (x > 0 && keyIsDown(65)) {
     x -= delta;
   }
-  if (x < width && keyIsDown(RIGHT_ARROW)) {
+  if (x < width && keyIsDown(68)) {
     x += delta;
+  }
+
+  //continuous shooting
+  if (keyIsDown(32) && frameCount % 6 == 0) {
+    let bullet = new Bullet(x, y);
+    bullets.push(bullet);
   }
 }
 
+
+// deliberate shooting
 function keyPressed() {
   if (key === " ") {
     let bullet = new Bullet(x, y);
     bullets.push(bullet);
   }
 }
+
