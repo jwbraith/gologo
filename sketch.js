@@ -26,15 +26,20 @@ function draw() {
   background(0);
   stroke(255);
 
+  // animating the enemies
   for (let i = 0; i < toon1.length; i++) {
     toon1[i].update(formation.toonA[i].x, formation.toonA[i].y, formation.posX, formation.posY);
     toon1[i].show();
-
   }
+
+  // animating the hidden formation
   formation.update();
-  formation.show();
+  // formation.show();
+
+  //animating what is currently just a player rect
   rect(x, y, 6, 6);
 
+  // animating bullets
   bullets.forEach(bullet => {
     bullet.update();
     bullet.show();

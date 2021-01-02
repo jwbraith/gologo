@@ -9,36 +9,54 @@ class Formation {
     this.toonA = [
       {
         x: 30,
-        y: 30
-      },
-      {
-        x: 50,
-        y: 30
-      },
-      {
-        x: 30,
         y: 50
       },
       {
         x: 50,
         y: 50
       },
-
       {
         x: 30,
         y: 70
       },
       {
         x: 50,
-        y: 70,
+        y: 70
       },
+
       {
         x: 30,
         y: 90
       },
       {
         x: 50,
-        y: 90
+        y: 90,
+      },
+      {
+        x: 30,
+        y: 110
+      },
+      {
+        x: 50,
+        y: 110
+      }
+    ]
+    this.toonB = [
+      {
+        x: 70,
+        y: 30
+      },
+      {
+        x: 90,
+        y: 30
+      },
+      {
+        x: 70,
+        y: 50,
+      },
+      {
+        x: 90,
+        y: 50,
       }
     ]
   }
@@ -59,6 +77,9 @@ class Formation {
     fill(255, 0, 255);
     for (let i = 0; i < this.toonA.length; i++) {
       ellipse(this.toonA[i].x, this.toonA[i].y, 6);
+    }
+    for (let i = 0; i < this.toonB.length; i++) {
+      ellipse(this.toonB[i].x, this.toonB[i].y, 6);
     }
     pop();
   }
