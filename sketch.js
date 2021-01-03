@@ -15,7 +15,7 @@ function setup() {
   angleMode(DEGREES);
   enemy = new Enemy(0, 280, 6);
   for (let i = 0; i < numInToon; i++) {
-    toon1.push(new Enemy(20 - (i * 20), 280 + (i * 30), 6, i * 20, 65));
+    toon1.push(new Enemy(20 - (i * 12), 280 + (i * 18), 6));
   }
   formation = new Formation();
   x = width / 2;
@@ -34,7 +34,7 @@ function draw() {
 
   // animating the hidden formation
   formation.update();
-  // formation.show();
+  formation.show();
 
   //animating what is currently just a player rect
   rect(x, y, 6, 6);
