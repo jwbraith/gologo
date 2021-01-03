@@ -26,7 +26,7 @@ class Enemy {
       if (this.origin.y > 200) {
         this.forward();
       } else {
-        if (this.angX < 405) {
+        if (this.angX < 480) {
           this.loopDeLoop();
         } else if (this.origin.y > 110) {
           this.forward();
