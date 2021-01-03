@@ -34,7 +34,7 @@ function draw() {
 
   // animating the hidden formation
   formation.update();
-  formation.show();
+  // formation.show();
 
   //animating what is currently just a player rect
   rect(x, y, 6, 6);
