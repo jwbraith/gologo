@@ -2,6 +2,7 @@ let x, y;
 let delta = 5;
 let toon1 = [];
 let bullets = [];
+let stars = [];
 let formation;
 
 let numInToon = 8;
@@ -17,6 +18,14 @@ function setup() {
   for (let i = 0; i < numInToon; i++) {
     toon1.push(new Enemy(20 - (i * 12), 280 + (i * 18), 6));
   }
+  for (let i = 5; i < width; i += 20) {
+    for (let j = 5; j < height; j += 20) {
+      stroke(random(155));
+      if (random() < 0.5) {
+        stars.push(new Star(i + random(15), j + random(15)));
+      }
+    }
+  }
   formation = new Formation();
   x = width / 2;
   y = 280;
@@ -25,6 +34,11 @@ function setup() {
 function draw() {
   background(0);
   stroke(255);
+  // animating the stars
+  stars.forEach(star => {
+    star.update();
+    star.show();
+  });
 
   // animating the enemies
   for (let i = 0; i < toon1.length; i++) {
