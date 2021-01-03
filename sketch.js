@@ -28,7 +28,7 @@ function draw() {
 
   // animating the enemies
   for (let i = 0; i < toon1.length; i++) {
-    toon1[i].update(formation.toonA[i].x, formation.toonA[i].y, formation.posX, formation.posY);
+    toon1[i].update(formation.toonC[i].x, formation.toonC[i].y, formation.posX, formation.posY);
     toon1[i].show();
   }
 

@@ -8,77 +8,140 @@ class Formation {
     // this keeps track of the positions that make up the formation
     this.toonA = [
       {
-        x: 30,
+        x: 45,
         y: 50
       },
       {
-        x: 50,
+        x: 70,
         y: 50
       },
       {
-        x: 30,
+        x: 45,
         y: 70
       },
       {
-        x: 50,
+        x: 70,
         y: 70
       },
 
       {
-        x: 30,
+        x: 45,
         y: 90
       },
       {
-        x: 50,
+        x: 70,
         y: 90,
       },
       {
-        x: 30,
+        x: 45,
         y: 110
       },
       {
-        x: 50,
+        x: 70,
         y: 110
       }
     ]
     this.toonB = [
       {
-        x: 70,
+        x: 95,
         y: 30
       },
       {
-        x: 90,
+        x: 120,
         y: 30
       },
       {
-        x: 70,
+        x: 95,
         y: 50,
       },
       {
-        x: 90,
+        x: 120,
         y: 50,
       },
       {
-        x: 70,
-        y: 70
+        x: 145,
+        y: 30
       },
       {
-        x: 90,
-        y: 70
+        x: 170,
+        y: 30
       },
       {
-        x: 70,
-        y: 90
+        x: 145,
+        y: 50
       },
       {
-        x: 90,
-        y: 90
+        x: 170,
+        y: 50
       }
     ]
     this.toonC = [
       {
-        x: 110,
-        y: 30
+        x: 95,
+        y: 70
+      },
+      {
+        x: 120,
+        y: 70
+      },
+      {
+        x: 95,
+        y: 90
+      },
+      {
+        x: 120,
+        y: 90
+      },
+      {
+        x: 145,
+        y: 70
+      },
+      {
+        x: 170,
+        y: 70
+      },
+      {
+        x: 145,
+        y: 90
+      },
+      {
+        x: 170,
+        y: 90
+      }
+    ]
+    this.toonD = [
+      {
+        x: 195,
+        y: 50
+      },
+      {
+        x: 220,
+        y: 50
+      },
+      {
+        x: 195,
+        y: 70
+      },
+      {
+        x: 220,
+        y: 70
+      },
+
+      {
+        x: 195,
+        y: 90
+      },
+      {
+        x: 220,
+        y: 90,
+      },
+      {
+        x: 195,
+        y: 110
+      },
+      {
+        x: 220,
+        y: 110
       }
     ]
   }
@@ -102,6 +165,12 @@ class Formation {
     }
     for (let i = 0; i < this.toonB.length; i++) {
       ellipse(this.toonB[i].x, this.toonB[i].y, 6);
+    }
+    for (let i = 0; i < this.toonC.length; i++) {
+      ellipse(this.toonC[i].x, this.toonC[i].y, 6);
+    }
+    for (let i = 0; i < this.toonD.length; i++) {
+      ellipse(this.toonD[i].x, this.toonD[i].y, 6);
     }
     pop();
   }
