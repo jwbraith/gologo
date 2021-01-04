@@ -21,7 +21,6 @@ class Enemy {
 
   update(endPosX, endPosY, offsetX, offsetY) {
     let endPos = createVector(endPosX + offsetX, endPosY + offsetY);
-    console.log("the received position should be at least 30, 30 but is " + endPos.x + ', ' + endPos.y);
     if (this.flying) {
       if (this.origin.y > 200) {
         this.forward();
@@ -64,6 +63,11 @@ class Enemy {
 
   float(endPos) {
     this.origin = p5.Vector.lerp(this.origin, endPos, 1.0);
+  }
+
+  attack() {
+    let attackDir = createVector(0, 2);
+    this.origin.add(attackDir);
   }
 
 
