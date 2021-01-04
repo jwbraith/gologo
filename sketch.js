@@ -18,10 +18,12 @@ function setup() {
   for (let i = 0; i < numInToon; i++) {
     toon1.push(new Enemy(20 - (i * 12), 280 + (i * 18), 6));
   }
+
+  //create the stars
   for (let i = 5; i < width; i += 20) {
     for (let j = 5; j < height; j += 20) {
       stroke(random(155));
-      if (random() < 0.5) {
+      if (random() < 0.25) {
         stars.push(new Star(i + random(15), j + random(15)));
       }
     }
