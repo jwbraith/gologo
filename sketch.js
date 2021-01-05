@@ -1,6 +1,7 @@
 let x, y;
 let delta = 5;
 let toon1 = [];
+let toon2 = [];
 let bullets = [];
 let stars = [];
 let formation;
@@ -20,8 +21,10 @@ function setup() {
   enemy = new Enemy(0, 280, 6);
   for (let i = 0; i < numInToon; i++) {
     toon1.push(new Enemy(20 - (i * 12), 280 + (i * 18), 6));
+    toon2.push(new EnemyLeftTop((width / 2) - i, 0 - (i * 18), 6));
   }
   squadron.push(toon1);
+  squadron.push(toon2);
   console.log(squadron);
   //create the stars
   for (let i = 5; i < width; i += 20) {
@@ -54,6 +57,8 @@ function draw() {
     } else {
       toon1[i].update(formation.toonC[i].x, formation.toonC[i].y, formation.posX, formation.posY);
     }
+    toon2[i].update(formation.toonB[i].x, formation.toonB[i].y, formation.posX, formation.posY);
+    toon2[i].show();
     toon1[i].show();
   }
 
@@ -71,7 +76,7 @@ function draw() {
   });
 
   // movement keys
-  if (y > 260 && keyIsDown(87)) {
+  if (y > 240 && keyIsDown(87)) {
     y -= delta;
   }
   if (y < height && keyIsDown(83)) {
@@ -92,7 +97,6 @@ function draw() {
       }
     }
   }
-  console.log(bullets.length);
 
   //continuous shooting
   if (keyIsDown(32) && frameCount % 6 == 0) {
