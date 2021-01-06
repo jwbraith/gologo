@@ -67,7 +67,7 @@ function draw() {
   // formation.show();
 
   //animating what is currently just a player rect
-  rect(x, y, 6, 6);
+  rect(x, y, 9, 9);
 
   // animating bullets
   bullets.forEach(bullet => {

@@ -17,7 +17,7 @@ class EnemyLeftTop {
   // TODO 
   // - organize the update parts into separate movements functions?
   // - make more than one enemy? how do they enter in, how do they have separate flight paths
-  // - make a toon object
+  // the flight behaviour needs to be based on three parts in sequence: flight to rotation, then rotation, then flight to formation
 
   update(endPosX, endPosY, offsetX, offsetY) {
     let endPos = createVector(endPosX + offsetX, endPosY + offsetY);
