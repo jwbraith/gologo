@@ -43,8 +43,7 @@ function setup() {
 function draw() {
   background(0);
   stroke(255);
-  // console.log(`The frame count is ${frameCount}`);
-  // animating the stars
+
   stars.forEach(star => {
     star.update();
     star.show();
